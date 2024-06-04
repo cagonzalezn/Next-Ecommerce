@@ -4,20 +4,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import CartModal from "./CartModal";
 
 const NavIcons = () => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
-  const router=useRouter();
-  
-  const isLoggedIn = false
-  const handleProfile = ()=>{
-    if(!isLoggedIn){
+  const router = useRouter();
+
+  const isLoggedIn = false;
+  const handleProfile = () => {
+    if (!isLoggedIn) {
       router.push("/login");
     }
-    setIsProfileOpen((prev) =>!prev)
-  }
+    setIsProfileOpen((prev) => !prev);
+  };
   return (
     <div className="flex items-center gap-4 xl:gap-6 relative">
       <Image
@@ -41,15 +42,20 @@ const NavIcons = () => {
         height={22}
         className="cursor-pointer"
       />
-      <Image
-        src="/cart.png"
-        alt=""
-        width={20}
-        height={22}
-        className="cursor-pointer"
-        onClick={()=> setIsCartOpen((prev)=>!prev)}
-      />
-      {/* {isCartOpen && ()} */}
+      <div className="relative cursor-pointer">
+        <Image
+          src="/cart.png"
+          alt=""
+          width={20}
+          height={22}
+          className="cursor-pointer"
+          onClick={() => setIsCartOpen((prev) => !prev)}
+        />
+        <div className="absolute -top-4 -right-4 w-6 h-6 bg-lama rounded-full text-white text-sm flex items-center justify-center">
+          2
+        </div>
+      </div>
+      {isCartOpen && <CartModal />}
     </div>
   );
 };
