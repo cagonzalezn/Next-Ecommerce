@@ -9,6 +9,7 @@ const CartModal = () => {
         <div className="">Cart is Empty</div>
       ) : (
         <>
+        <h2 className="text-xl">Shopping Card</h2>
         <div className="flex flex-col gap-8">
           {/* LIST */}
           {/* ITEM */}
@@ -66,6 +67,7 @@ const CartModal = () => {
             </div>
           </div>
         </div>
+        {/* BOTTOM */}
         <div className="">
           <div className="flex items-center justify-between font-semibold">
             <span className="">SubTotal</span>
